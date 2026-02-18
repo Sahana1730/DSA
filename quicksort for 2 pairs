@@ -1,0 +1,23 @@
+def quick_sort_pairs(pairs):
+    if len(pairs) <= 1:
+        return pairs
+    else:
+        pivot_pair = pairs[-1]
+        pivot_time = pivot_pair[0]
+        
+        left = [x for x in pairs[:-1] if x[0] < pivot_time]
+        right = [x for x in pairs[:-1] if x[0] >= pivot_time]
+        
+        return quick_sort_pairs(left) + [pivot_pair] + quick_sort_pairs(right)
+
+
+time = [60, 20, 80, 10, 90, 70, 50, 40, 44, 55, 66, 77, 12, 12]
+bib_num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+
+pairs = list(zip(time, bib_num))
+
+sorted_pairs = quick_sort_pairs(pairs)
+
+print("Top 10 Times and respective Bib Numbers:")
+for t, b in sorted_pairs[:10]:
+    print(f"Time: {t}, Bib No: {b}")
