@@ -1,0 +1,14 @@
+def quick_sort(arr):
+
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr[-1]
+        left = [x for x in arr[:-1] if x < pivot]
+        right = [x for x in arr[:-1] if x >= pivot]
+        return quick_sort(left) + [pivot] + quick_sort(right)
+
+marks = [55, 89, 34, 92, 12, 78, 65]
+sorted_marks = quick_sort(marks)
+print(f"Sorted marks using Quicksort: {sorted_marks}")
+
